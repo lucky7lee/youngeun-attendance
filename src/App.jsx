@@ -319,6 +319,10 @@ function App() {
             <div className="summary-value" style={{color: '#2563EB'}}>{globalStats.online}</div>
           </div>
           <div className="summary-row">
+            <div className="summary-label">총출석</div>
+            <div className="summary-value" style={{color: 'var(--primary)'}}>{globalStats.onsite + globalStats.online}</div>
+          </div>
+          <div className="summary-row">
             <div className="summary-label">재적</div>
             <div className="summary-value" style={{color: 'var(--text-main)'}}>{globalStats.total}</div>
           </div>
