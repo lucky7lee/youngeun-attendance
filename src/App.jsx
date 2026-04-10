@@ -165,21 +165,24 @@ function App() {
     <div className="app-container">
       <div className="header">
         <h1 className="title">영은교회 유아부 출석부</h1>
-        <div className="controls">
-          <button 
-            className="btn btn-danger" 
-            onClick={handleReset}
-          >
-            <RotateCcw size={18} />
-            리셋
-          </button>
-          <button 
-            className={`btn ${isEditing ? 'btn-primary' : 'btn-outline'}`}
-            onClick={() => setIsEditing(!isEditing)}
-          >
-            {isEditing ? <><Save size={18} /> 저장</> : <><Edit2 size={18} /> 수정</>}
-          </button>
-        </div>
+        <fieldset className="controls-fieldset">
+          <legend className="controls-legend">관리자전용</legend>
+          <div className="controls">
+            <button 
+              className="btn btn-danger" 
+              onClick={handleReset}
+            >
+              <RotateCcw size={18} />
+              리셋
+            </button>
+            <button 
+              className={`btn ${isEditing ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => setIsEditing(!isEditing)}
+            >
+              {isEditing ? <><Save size={18} /> 저장</> : <><Edit2 size={18} /> 수정</>}
+            </button>
+          </div>
+        </fieldset>
       </div>
 
       <div className="table-container">
@@ -187,15 +190,12 @@ function App() {
           <thead>
             <tr>
               <th rowSpan={2} style={{width: '7%'}}>반</th>
-              <th colSpan={3} style={{width: '18%'}}>담임</th>
+              <th colSpan={3} rowSpan={2} style={{width: '18%'}}>담임</th>
               <th colSpan={9}>유아부 유아 명단</th>
               <th rowSpan={2} style={{width: '6%'}}>유아출석</th>
               <th rowSpan={2} style={{width: '6%'}}>유아재적</th>
             </tr>
             <tr>
-              <th style={{borderTop: 'none', height: '0', padding: '0'}}></th>
-              <th style={{borderTop: 'none', height: '0', padding: '0'}}></th>
-              <th style={{borderTop: 'none', height: '0', padding: '0'}}></th>
               <th style={{width: '7%'}}>1</th>
               <th style={{width: '7%'}}>2</th>
               <th style={{width: '7%'}}>3</th>

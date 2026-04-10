@@ -50,6 +50,20 @@ body {
   margin: 0;
 }
 
+.controls-fieldset {
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.25rem 1rem 0.75rem;
+  margin: 0;
+}
+
+.controls-legend {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 0 0.5rem;
+}
+
 .controls {
   display: flex;
   gap: 1rem;
