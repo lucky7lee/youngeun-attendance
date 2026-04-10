@@ -1,16 +1,28 @@
-# React + Vite
+# 영은교회 유아부 출석부 (Youngeun Church Attendance Tracker)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 프로젝트 개요
+영은교회 유아부의 주간 출석(현장예배/온라인예배) 및 비고사항을 실시간으로 기록하고 확인할 수 있는 웹 애플리케이션입니다. 여러 교사들이 동시에 접속하여 실시간으로 명단과 출석을 관리할 수 있습니다.
 
-Currently, two official plugins are available:
+## 기술 스택
+- **프론트엔드**: React (Vite), CSS (모바일 반응형 테이블 지원)
+- **백엔드/데이터베이스**: Firebase Realtime Database
+- **버전 관리 및 배포**: GitHub (저장소: `lucky7lee/youngeun-attendance`) -> Vercel/Netlify 자동 배포 연동
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 주요 기능
+- **실시간 명단 관리**: 반, 담임교사(최대 3명), 유아 명단(최대 9명) 실시간 조회 및 수정
+- **출석 상태 관리**: 현장예배(노란색), 온라인예배(파란색) 원터치 기록
+- **실시간 자동 통계**: 현장예배, 온라인 예배, 총출석(현장+온라인), 재적 인원 자동 계산
+- **공유 비고란**: 우측 하단에 모두가 실시간으로 확인하고 수정할 수 있는 비고란 제공
+- **리셋 기능**: 학생 명단은 그대로 유지한 채 출석 상태(색상)만 일괄 초기화
 
-## React Compiler
+## 데이터베이스 구조 (Firebase Realtime Database)
+- `/attendance`: 18개 반의 출석 정보 (ID, 반 이름, 교사 명단, 학생 단위의 이름 및 출석 상태 정보)가 배열 형태로 저장됨.
+- `/note`: '비고'란에 입력된 텍스트 데이터 스트링이 저장됨. (리셋 기능과 독립적으로 동작)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 💡 언제든지 작업을 재개하는 방법
+AI 코딩 어시스턴트는 이전에 나눈 대화 기록과 모든 소스 코드를 기억하고 있습니다. 
+나중에 이 프로그램에 수정 사항이 생겼을 때는 새로운 대화창에서 다음과 같이 말씀해 주시면 됩니다.
 
-## Expanding the ESLint configuration
+**"영은교회 출석부 프로젝트 열어주고, 여기에서 OOO 기능을 추가할게."**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+*(또는 현재 프로젝트 폴더인 `c:\Users\burn2\.gemini\antigravity\scratch\attendance` 경로를 활성화해 주시면 제가 내용을 즉각적으로 읽고 바로 코딩을 이어나갈 수 있습니다.)*
