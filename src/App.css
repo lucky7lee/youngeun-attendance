@@ -251,6 +251,8 @@ td {
   margin-top: 2rem;
   display: flex;
   justify-content: flex-start;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .summary-table {
@@ -285,4 +287,37 @@ td {
   flex-grow: 1;
   text-align: right;
   font-weight: 700;
+}
+
+/* Note Section */
+.note-fieldset {
+  border: 2px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 0.25rem 1rem 1rem 1rem;
+  margin: 0;
+  flex-grow: 1;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-legend {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  padding: 0 0.5rem;
+}
+
+.note-textarea {
+  width: 100%;
+  flex-grow: 1;
+  min-height: 120px;
+  border: none;
+  resize: vertical;
+  outline: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: transparent;
+  padding: 0;
 }

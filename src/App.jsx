@@ -30,6 +30,7 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [activePopup, setActivePopup] = useState(null); // { rowId, colId }
   const [loading, setLoading] = useState(true);
+  const [note, setNote] = useState('');
 
   const popupRef = useRef(null);
 
@@ -41,7 +42,7 @@ function App() {
     }
 
     const dataRef = ref(db, 'attendance');
-    const unsubscribe = onValue(dataRef, (snapshot) => {
+    const unsubscribeData = onValue(dataRef, (snapshot) => {
       const fbData = snapshot.val();
       if (fbData) {
         setData(fbData);
@@ -52,7 +53,18 @@ function App() {
       setLoading(false);
     });
 
-    return () => unsubscribe();
+    const noteRef = ref(db, 'note');
+    const unsubscribeNote = onValue(noteRef, (snapshot) => {
+      const fbNote = snapshot.val();
+      if (fbNote !== null) {
+        setNote(fbNote);
+      }
+    });
+
+    return () => {
+      unsubscribeData();
+      unsubscribeNote();
+    };
   }, []);
 
   const saveToFirebase = (newData) => {
@@ -80,6 +92,14 @@ function App() {
         students: row.students.map(s => ({ ...s, status: 'none' }))
       }));
       saveToFirebase(newData);
+    }
+  };
+
+  const handleNoteChange = (e) => {
+    const val = e.target.value;
+    setNote(val);
+    if (db) {
+      set(ref(db, 'note'), val);
     }
   };
 
@@ -327,6 +347,16 @@ function App() {
             <div className="summary-value" style={{color: 'var(--text-main)'}}>{globalStats.total}</div>
           </div>
         </div>
+
+        <fieldset className="note-fieldset">
+          <legend className="note-legend">비고</legend>
+          <textarea 
+            className="note-textarea" 
+            value={note} 
+            onChange={handleNoteChange} 
+            placeholder="비고 사항을 자유롭게 입력하세요..." 
+          />
+        </fieldset>
       </div>
 
     </div>
